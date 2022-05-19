@@ -18,6 +18,9 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1h-LK-lJO">
                                 <rect key="frame" x="95" y="155" width="224" height="114"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="t1h-LK-lJO" secondAttribute="height" multiplier="112:57" id="N4A-Wm-gOc"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
                                 <connections>
@@ -46,9 +49,12 @@
                         <constraints>
                             <constraint firstItem="t1h-LK-lJO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6gb-y4-bc2"/>
                             <constraint firstItem="hUj-Xu-J5Y" firstAttribute="centerX" secondItem="t1h-LK-lJO" secondAttribute="centerX" id="7GM-ZI-Gkv"/>
+                            <constraint firstItem="hUj-Xu-J5Y" firstAttribute="height" secondItem="t1h-LK-lJO" secondAttribute="height" id="9Id-my-lED"/>
                             <constraint firstItem="FFT-I5-Ny3" firstAttribute="centerX" secondItem="hUj-Xu-J5Y" secondAttribute="centerX" id="Osw-2Z-Zxc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="FFT-I5-Ny3" secondAttribute="bottom" constant="20" id="Q6u-de-6MP"/>
                             <constraint firstItem="hUj-Xu-J5Y" firstAttribute="top" secondItem="t1h-LK-lJO" secondAttribute="bottom" constant="99" id="RGL-vy-cdb"/>
                             <constraint firstItem="FFT-I5-Ny3" firstAttribute="top" secondItem="hUj-Xu-J5Y" secondAttribute="bottom" constant="99" id="Wfs-dl-US9"/>
+                            <constraint firstItem="FFT-I5-Ny3" firstAttribute="height" secondItem="hUj-Xu-J5Y" secondAttribute="height" id="pP0-oN-hhB"/>
                             <constraint firstItem="t1h-LK-lJO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="67" id="qir-Qp-RGw"/>
                         </constraints>
                     </view>
