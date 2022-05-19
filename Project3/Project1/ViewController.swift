@@ -27,6 +27,8 @@ class ViewController: UITableViewController {
             }
         }
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Recommend", style: .plain, target: self, action: #selector(recommend))
+        
         print(pictures)
     }
 
@@ -45,6 +47,12 @@ class ViewController: UITableViewController {
             vc.selectedImage = pictures[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    @objc func recommend() {
+        let ac = UIAlertController(title: "Thanks!", message: "Recommend to your friends!", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Continue", style: .default))
+        present(ac, animated: true)
     }
 
 }

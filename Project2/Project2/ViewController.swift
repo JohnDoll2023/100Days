@@ -45,6 +45,8 @@ class ViewController: UIViewController {
         countries.append("us")
         
         askQuestion()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Score", style: .plain, target: self, action: #selector(showScore))
     }
     
     func askQuestion(action: UIAlertAction! = nil) {
@@ -72,6 +74,12 @@ class ViewController: UIViewController {
             ac = UIAlertController(title: title, message: "After 10 questions, your final score is \(score).", preferredStyle: .alert)
         }
         ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        present(ac, animated: true)
+    }
+    
+    @objc func showScore() {
+        let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Continue", style: .default))
         present(ac, animated: true)
     }
 }
