@@ -20,10 +20,12 @@ class ViewController: UITableViewController {
         let path = Bundle.main.resourcePath!
         let items = try! fm.contentsOfDirectory(atPath: path)
         
-        for item in items {
-            if item.hasPrefix("nssl") {
-                // this is picture to load
-                pictures.append(item)
+        DispatchQueue.global(qos: .userInitiated).async {
+            for item in items {
+                if item.hasPrefix("nssl") {
+                    // this is picture to load
+                    self.pictures.append(item)
+                }
             }
         }
         
