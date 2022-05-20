@@ -41,9 +41,9 @@ class ViewController: UITableViewController {
     }
     
     @objc func filter() {
+        // cannot be async
         let ac = UIAlertController(title: "Enter word to filter by", message: nil, preferredStyle: .alert)
         ac.addTextField()
-        
         
         let submitFilter = UIAlertAction(title: "Filter", style: .default) { [weak self, weak ac] action in
             guard let filter = ac?.textFields?[0].text else { return }
@@ -51,28 +51,38 @@ class ViewController: UITableViewController {
                 self?.submit(filter)
             }
         }
+        print(filtered)
+        // cannot be async
         ac.addAction(submitFilter)
         present(ac, animated: true)
     }
     
     func submit(_ filter: String) {
-        self.filtered = []
+//        DispatchQueue.global(qos: .userInitiated).async {
+            self.filtered = []
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
-        for petition in self.petitions {
-            if (petition.title.contains(filter)) {
-                self.filtered.insert(petition, at: 0)
-                let indexPath = IndexPath(row: 0, section: 0)
-                DispatchQueue.main.async {
-                    self.tableView.insertRows(at: [indexPath], with: .automatic)
+            // cannot be async
+//            self.tableView.reloadData()
+            for petition in self.petitions {
+                if (petition.title.contains(filter)) {
+                    self.filtered.insert(petition, at: 0)
+                    let indexPath = IndexPath(row: 0, section: 0)
+                    
+                    // cannot be async
+                    DispatchQueue.main.async {
+                        self.tableView.insertRows(at: [indexPath], with: .automatic)
+                    }
                 }
-                
             }
-        }
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+            print(filtered)
+            
+            // cannot be async
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        //}
     }
     
     @objc func credits() {
