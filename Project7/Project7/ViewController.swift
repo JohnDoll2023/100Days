@@ -9,10 +9,16 @@ import UIKit
 
 class ViewController: UITableViewController {
     var petitions = [Petition]()
+    var filtered = [Petition]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: .plain, target: self, action: #selector(credits))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(filter))
+        
         let urlString: String
 
         if navigationController?.tabBarItem.tag == 0 {
@@ -35,6 +41,37 @@ class ViewController: UITableViewController {
         }
     }
     
+    @objc func filter() {
+        let ac = UIAlertController(title: "Enter word to filter by", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+        
+        let submitFilter = UIAlertAction(title: "Filter", style: .default) { [weak self, weak ac] action in
+            guard let filter = ac?.textFields?[0].text else { return }
+            self?.submit(filter)
+        }
+        ac.addAction(submitFilter)
+        present(ac, animated: true)
+    }
+    
+    func submit(_ filter: String) {
+        filtered = []
+        tableView.reloadData()
+        for petition in petitions {
+            if (petition.title.contains(filter)) {
+                filtered.insert(petition, at: 0)
+                let indexPath = IndexPath(row: 0, section: 0)
+                tableView.insertRows(at: [indexPath], with: .automatic)
+            }
+        }
+        tableView.reloadData()
+    }
+    
+    @objc func credits() {
+        let ac = UIAlertController(title: "Credits", message: "Data originates from We The People API", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
+    
     func showError() {
         let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -46,17 +83,18 @@ class ViewController: UITableViewController {
 
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
             petitions = jsonPetitions.results
+            filtered = petitions
             tableView.reloadData()
         }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return petitions.count
+        return filtered.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let petition = petitions[indexPath.row]
+        let petition = filtered[indexPath.row]
         cell.textLabel?.text = petition.title
         cell.detailTextLabel?.text = petition.body
         return cell
@@ -64,7 +102,7 @@ class ViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailViewController()
-        vc.detailItem = petitions[indexPath.row]
+        vc.detailItem = filtered[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
 }
