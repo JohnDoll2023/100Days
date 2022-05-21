@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4506F9A28380D1900833D06 /* PictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4506F9928380D1900833D06 /* PictureCell.swift */; };
 		E4ACF42B27759EC8008B059D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACF42A27759EC8008B059D /* AppDelegate.swift */; };
 		E4ACF42D27759EC8008B059D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACF42C27759EC8008B059D /* SceneDelegate.swift */; };
 		E4ACF42F27759EC8008B059D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ACF42E27759EC8008B059D /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E4506F9928380D1900833D06 /* PictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureCell.swift; sourceTree = "<group>"; };
 		E4ACF42727759EC8008B059D /* Project1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4ACF42A27759EC8008B059D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4ACF42C27759EC8008B059D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				E4ACF42A27759EC8008B059D /* AppDelegate.swift */,
+				E4506F9928380D1900833D06 /* PictureCell.swift */,
 				E4ACF42C27759EC8008B059D /* SceneDelegate.swift */,
 				E4ACF42E27759EC8008B059D /* ViewController.swift */,
 				E4ACF4532775AA7E008B059D /* DetailViewController.swift */,
@@ -191,6 +194,7 @@
 			files = (
 				E4ACF42F27759EC8008B059D /* ViewController.swift in Sources */,
 				E4ACF42B27759EC8008B059D /* AppDelegate.swift in Sources */,
+				E4506F9A28380D1900833D06 /* PictureCell.swift in Sources */,
 				E4ACF42D27759EC8008B059D /* SceneDelegate.swift in Sources */,
 				E4ACF4542775AA7E008B059D /* DetailViewController.swift in Sources */,
 			);

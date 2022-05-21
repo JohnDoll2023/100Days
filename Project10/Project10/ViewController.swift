@@ -13,7 +13,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewPerson))
 
     }
 
@@ -40,7 +40,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
 
         return cell
     }
-    
+
     @objc func addNewPerson() {
         let picker = UIImagePickerController()
         if (UIImagePickerController.isSourceTypeAvailable(.camera)) {
@@ -61,7 +61,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         if let jpegData = image.jpegData(compressionQuality: 0.8) {
             try? jpegData.write(to: imagePath)
         }
-        
+
         let person = Person(name: "Unknown", image: imageName)
         people.append(person)
         collectionView.reloadData()
@@ -73,7 +73,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let person = people[indexPath.item]
         let ac = UIAlertController(title: "Rename person", message: nil, preferredStyle: .alert)
@@ -84,7 +84,7 @@ class ViewController: UICollectionViewController, UIImagePickerControllerDelegat
             person.name = newName
             self?.collectionView.reloadData()
         })
-        
+
         let action = UIAlertController(title: "Rename or delete person", message: nil, preferredStyle: .alert)
         action.addAction(UIAlertAction(title: "Rename", style: .default) { _ in
             self.present(ac, animated: true)
