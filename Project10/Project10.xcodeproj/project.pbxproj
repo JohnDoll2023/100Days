@@ -44,7 +44,6 @@
 		E4506F75283772E600833D06 = {
 			isa = PBXGroup;
 			children = (
-				E4506F9728377AB000833D06 /* Person.swift */,
 				E4506F80283772E600833D06 /* Project10 */,
 				E4506F7F283772E600833D06 /* Products */,
 			);
@@ -61,6 +60,7 @@
 		E4506F80283772E600833D06 /* Project10 */ = {
 			isa = PBXGroup;
 			children = (
+				E4506F9728377AB000833D06 /* Person.swift */,
 				E4506F81283772E600833D06 /* AppDelegate.swift */,
 				E4506F83283772E600833D06 /* SceneDelegate.swift */,
 				E4506F85283772E600833D06 /* ViewController.swift */,
