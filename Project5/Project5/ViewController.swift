@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UITableViewController {
     var allWords = [String]()
     var usedWords = [String]()
+    var details = UserDefaults.standard
     
     @objc func startGame() {
         title = allWords.randomElement()
@@ -31,6 +32,8 @@ class ViewController: UITableViewController {
                 allWords = startWords.components(separatedBy: "\n")
             }
         }
+        
+        usedWords = details.object(forKey: "usedWords") as? [String] ?? [String]()
 
         if allWords.isEmpty {
             allWords = ["silkworm"]
@@ -40,6 +43,7 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        details.set(usedWords, forKey: "usedWords")
         return usedWords.count
     }
 

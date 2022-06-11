@@ -17,11 +17,15 @@ class ViewController: UIViewController {
     var correctAnswer = 0
     var score = 0
     var questionsAsked = 0
+    var details = UserDefaults.standard
+    var highScore = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        highScore = details.object(forKey: "highScore") as? Int ?? 0
         
         button1.layer.borderWidth = 1
         button2.layer.borderWidth = 1
@@ -65,6 +69,11 @@ class ViewController: UIViewController {
         if sender.tag == correctAnswer {
             title = "Correct"
             score += 1
+            if (score > highScore) {
+                highScore = score
+                title = "New high score!"
+                details.set(highScore, forKey: "highScore")
+            }
         } else {
             title = "Wrong, the country you chose was \(countries[sender.tag].uppercased())"
             score -= 1
